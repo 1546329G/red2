@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clasificador de Gestos</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    #container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #34495e;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    #webcam-container canvas {
+      border-radius: 12px;
+      border: 4px solid #3498db;
+      background-color: #eef6ff;
+      max-width: 100%;
+    }
+
+    #label-container {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #main-prediction {
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .prediction-text {
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+
+    .confidence-bar {
+      height: 16px;
+      border-radius: 10px;
+      background-color: #ccc;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      background-color: #3498db;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    #detailed-predictions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .prediction-item-detailed {
+      text-align: left;
+      background: #f7f9fa;
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .detailed-prediction-text {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .detailed-confidence-value {
+      float: right;
+      font-weight: bold;
+    }
+
+    .confidence-bar-detailed {
+      height: 12px;
+      background-color: #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .confidence-fill-detailed {
+      height: 100%;
+      width: 0%;
+      background-color: #2980b9;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Clasificador de Gestos</h1>
+    <p>Muestra un tu dedso y rostro.</p>
+
+    <div id="webcam-container"></div>
+    <div id="label-container">Cargando modelo...</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
